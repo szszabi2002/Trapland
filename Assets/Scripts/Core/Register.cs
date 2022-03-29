@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using TMPro;
-using UnityEngine.SceneManagement;
 public class Register : MonoBehaviour
 {
     public TMP_InputField nameField, passwordField;
     public Button submitButton;
     public TMP_Text Info;
+    public GameObject InfoPrompt;
     public void CallRegister()
     {
         StartCoroutine(Registration());
@@ -24,16 +24,17 @@ public class Register : MonoBehaviour
         yield return request.SendWebRequest();
         if (request.downloadHandler.text == "0")
         {
-            Info.SetText("User created successfully!");
-            Info.SetText("");
+            InfoPrompt.SetActive(true);
+            Info.SetText("User created successfully!", true);
         }
         else
         {
-            Info.SetText("User creation failed! Error: #" + request.downloadHandler.text);
+            InfoPrompt.SetActive(true);
+            Info.SetText("User creation failed! \nError: #" + request.downloadHandler.text, true);
         }
     }
     public void VerifyInputs()
     {
-        submitButton.interactable = (nameField.text.Length >= 8 && passwordField.text.Length >= 8);
+        submitButton.interactable = (nameField.text.Length >= 3 && passwordField.text.Length >= 8);
     }
 }
