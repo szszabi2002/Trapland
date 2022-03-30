@@ -25,7 +25,9 @@ public class Login : MonoBehaviour
         if (request.downloadHandler.text[0] == '0')
         {
             DBManager.username = nameField.text;
-            DBManager.DeathCounter = int.Parse(request.downloadHandler.text.Split('\t')[1]);
+            DBManager.ReachedLevel = int.Parse(request.downloadHandler.text.Split('\t')[1]);
+            InfoPrompt.SetActive(true);
+            Info.SetText("User logged in!",true);
         }
         else
         {
