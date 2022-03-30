@@ -10,7 +10,7 @@ public class KillOnTouch : MonoBehaviour
 	private void OnCollisionEnter2D(Collision2D collision) {
 		if (collision.gameObject.tag == ("SureKill") && !hasEntered) {
 			hasEntered = true;
-            GlobalVariable.DeathCounter += 1;
+            DBManager.DeathCounter += 1;
 			Destroy(player);
 			LevelManager.Instance.Respawn();
 		}

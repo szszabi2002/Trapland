@@ -25,7 +25,7 @@ public class LevelManager : MonoBehaviour
     {
         while (true)
         {
-            Death.text = "Death Counter: " + GlobalVariable.DeathCounter.ToString();
+            Death.text = "Death Counter: " + DBManager.DeathCounter.ToString();
             yield return null;
         }
     }

@@ -51,7 +51,7 @@ public class Health : MonoBehaviour
             if (dead && player.tag == ("Player"))
             {
                 LevelManager.Instance.Respawn();
-                GlobalVariable.DeathCounter += 1;
+                DBManager.DeathCounter += 1;
             }
         }
     }
