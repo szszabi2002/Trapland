@@ -10,7 +10,38 @@ public class Register : MonoBehaviour
     public TMP_InputField nameField, passwordField;
     public Button submitButton;
     public TMP_Text Info;
-    public GameObject InfoPrompt;
+    public GameObject InfoPrompt, OkButton, MainMenuButton;
+    public int InputSelected;
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab) && Input.GetKey(KeyCode.LeftShift))
+        {
+            InputSelected--;
+            if (InputSelected < 0) InputSelected = 1;
+            SelectInputField();
+        }
+
+        else if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            InputSelected++;
+            if (InputSelected > 1) InputSelected = 0;
+            SelectInputField();
+        }
+        void SelectInputField()
+        {
+            switch (InputSelected)
+            {
+                case 0:
+                    nameField.Select();
+                    break;
+                case 1:
+                    passwordField.Select();
+                    break;
+            }
+        }
+    }
+    public void nameFieldSelected() => InputSelected = 0;
+    public void passFieldSelected() => InputSelected = 1;
     public void CallRegister()
     {
         StartCoroutine(Registration());
@@ -26,11 +57,13 @@ public class Register : MonoBehaviour
         if (request.downloadHandler.text == "0")
         {
             InfoPrompt.SetActive(true);
+            MainMenuButton.SetActive(true);
             Info.SetText("User created successfully!", true);
         }
         else
         {
             InfoPrompt.SetActive(true);
+            OkButton.SetActive(true);
             Info.SetText("User creation failed! \nError: #" + request.downloadHandler.text, true);
         }
     }

@@ -9,4 +9,9 @@ public class MainMenu : MonoBehaviour
         Debug.Log("QUIT!");
         Application.Quit();
     }
+    public void Logout()
+    {
+        DBManager.Logout();
+        SceneManager.LoadScene(0);
+    }
 }

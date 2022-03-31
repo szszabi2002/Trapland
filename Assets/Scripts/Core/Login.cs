@@ -11,6 +11,37 @@ public class Login : MonoBehaviour
     public Button submitButton;
     public TMP_Text Info;
     public GameObject InfoPrompt, OkButton, PlayButton;
+    public int InputSelected;
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab) && Input.GetKey(KeyCode.LeftShift))
+        {
+            InputSelected--;
+            if (InputSelected < 0) InputSelected = 1;
+            SelectInputField();
+        }
+
+        else if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            InputSelected++;
+            if (InputSelected > 1) InputSelected = 0;
+            SelectInputField();
+        }
+        void SelectInputField()
+        {
+            switch (InputSelected)
+            {
+                case 0:
+                    nameField.Select();
+                    break;
+                case 1:
+                    passwordField.Select();
+                    break;
+            }
+        }
+    }
+    public void nameFieldSelected() => InputSelected = 0;
+    public void passFieldSelected() => InputSelected = 1;
     public void CallLogin()
     {
         StartCoroutine(login());
@@ -28,7 +59,7 @@ public class Login : MonoBehaviour
             DBManager.ReachedLevel = int.Parse(request.downloadHandler.text.Split('\t')[1]);
             InfoPrompt.SetActive(true);
             PlayButton.SetActive(true);
-            Info.SetText("User logged in!",true);
+            Info.SetText("Logged in as " + DBManager.username, true);
         }
         else
         {
