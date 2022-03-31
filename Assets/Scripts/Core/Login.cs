@@ -10,7 +10,7 @@ public class Login : MonoBehaviour
     public TMP_InputField nameField, passwordField;
     public Button submitButton;
     public TMP_Text Info;
-    public GameObject InfoPrompt;
+    public GameObject InfoPrompt, OkButton, PlayButton;
     public void CallLogin()
     {
         StartCoroutine(login());
@@ -27,11 +27,13 @@ public class Login : MonoBehaviour
             DBManager.username = nameField.text;
             DBManager.ReachedLevel = int.Parse(request.downloadHandler.text.Split('\t')[1]);
             InfoPrompt.SetActive(true);
+            PlayButton.SetActive(true);
             Info.SetText("User logged in!",true);
         }
         else
         {
             InfoPrompt.SetActive(true);
+            OkButton.SetActive(true);
             Info.SetText("User login failed! \nError: #" + request.downloadHandler.text, true);
         }
     }

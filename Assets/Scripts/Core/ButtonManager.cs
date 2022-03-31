@@ -8,13 +8,9 @@ public class ButtonManager : MonoBehaviour
 {
     
     Button[] LevelButton;
-    void Start()
-    {
-        
-    }
     private void Awake()
     {
-        int ReachedLevel = PlayerPrefs.GetInt("ReachedLevel", 1);
+        int ReachedLevel = DBManager.ReachedLevel;
         if (PlayerPrefs.GetInt("Level") >= 2)
         {
             ReachedLevel = PlayerPrefs.GetInt("Level");
