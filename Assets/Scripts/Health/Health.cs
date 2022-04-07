@@ -43,8 +43,8 @@ public class Health : MonoBehaviour
 
                 foreach (Behaviour component in components)
                 {
-                    Destroy(player);
                     component.enabled = false;
+                    Destroy(player);
                 }
                 dead = true;
             }
