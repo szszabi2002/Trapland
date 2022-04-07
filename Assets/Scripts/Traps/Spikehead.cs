@@ -10,8 +10,13 @@ public class Spikehead : EnemyDamage
     [SerializeField] private LayerMask playerLayer;
     private Vector3[] directions = new Vector3[4];
     private Vector3 destination;
+    private Vector3 startdestination;
     private float checkTimer;
     private bool attacking;
+    private void Awake()
+    {
+        startdestination = this.transform.position;
+    }
     private void OnEnable()
     {
         Stop();
@@ -48,19 +53,22 @@ public class Spikehead : EnemyDamage
     }
     private void CalculateDirections()
     {
-        directions[0] = transform.right * range;
-        directions[1] = -transform.right * range;
-        directions[2] = transform.up * range;
         directions[3] = -transform.up * range;
     }
     private void Stop()
     {
-        destination = transform.position;
+        this.transform.position = startdestination;
         attacking = false;
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private new void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
+        StartCoroutine(StopAttack());
+    }
+    IEnumerator StopAttack()
+    {
+        attacking = false;
+        yield return new WaitForSeconds(0.5f);
         Stop();
     }
 }
