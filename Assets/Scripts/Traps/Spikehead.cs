@@ -68,7 +68,7 @@ public class Spikehead : EnemyDamage
     IEnumerator StopAttack()
     {
         attacking = false;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         Stop();
     }
 }

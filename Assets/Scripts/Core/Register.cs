@@ -49,7 +49,7 @@ public class Register : MonoBehaviour
     IEnumerator Registration()
     {
         WWWForm form = new WWWForm();
-        form.AddField("name", nameField.text);
+        form.AddField("username", nameField.text);
         form.AddField("password", passwordField.text);
         UnityWebRequest request = UnityWebRequest.Post("https://trapland.000webhostapp.com/Register.php", form);
         //UnityWebRequest request = UnityWebRequest.Post("http://localhost/Trapland/Register.php", form);

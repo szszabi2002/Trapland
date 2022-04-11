@@ -42,10 +42,10 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(1);
     }
-    public void QuitGame()
+    public void RestartGame()
     {
-        Debug.Log("QUIT!");
-        DBManager.Logout();
-        Application.Quit();
+        Time.timeScale = 1f;
+        SceneManager.LoadScene( SceneManager.GetActiveScene().name );
+        DBManager.DeathCounter = 0;
     }
 }

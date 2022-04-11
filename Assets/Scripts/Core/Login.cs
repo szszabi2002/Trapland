@@ -49,7 +49,7 @@ public class Login : MonoBehaviour
     IEnumerator login()
     {
         WWWForm form = new WWWForm();
-        form.AddField("name", nameField.text);
+        form.AddField("username", nameField.text);
         form.AddField("password", passwordField.text);
         UnityWebRequest request = UnityWebRequest.Post("https://trapland.000webhostapp.com/Login.php", form);
         yield return request.SendWebRequest();
