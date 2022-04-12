@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
-        if(Grounded())
+        if(IsGrounded())
         {
             coyoteTimeCounter = coyoteTime;
         }

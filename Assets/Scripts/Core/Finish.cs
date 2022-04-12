@@ -30,6 +30,7 @@ public class Finish : MonoBehaviour
     public void NextLevel()
     {
         DBManager.ReachedLevel += 1;
+        Debug.Log(DBManager.ReachedLevel);
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }

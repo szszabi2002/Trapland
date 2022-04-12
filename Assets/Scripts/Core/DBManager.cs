@@ -6,7 +6,6 @@ using UnityEngine;
 public static class DBManager
 {
     public static string username;
-    public static int ReachLevel;
     public static int Level;
     public static string Time;
     public static int DeathCounter = 0;
