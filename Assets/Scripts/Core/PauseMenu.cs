@@ -7,9 +7,10 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
     public static bool isPaused;
-    void Start()
+    void Awake()
     {
         pauseMenu.SetActive(false);
+        isPaused = false;
     }
     void Update()
     {
@@ -44,8 +45,8 @@ public class PauseMenu : MonoBehaviour
     }
     public void RestartGame()
     {
-        Time.timeScale = 1f;
         SceneManager.LoadScene( SceneManager.GetActiveScene().name );
         DBManager.DeathCounter = 0;
+        Time.timeScale = 1f;
     }
 }
