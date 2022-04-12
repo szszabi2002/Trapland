@@ -2,6 +2,7 @@
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Movement")]
     [SerializeField] private float speed;
     [SerializeField] private float jumpPower;
     [SerializeField] private LayerMask groundLayer;
@@ -10,11 +11,20 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     private float horizontalInput;
     private bool isFacingRight = true;
+
     [Header("Wall Jump")]
     [SerializeField] private Transform WallCheck;
     private bool canGrab, IsGrabbing;
     private float gravityStore;
 
+    [Header("Coyote Time")]
+    [SerializeField] private float coyoteTime = 0.2f;
+    private float coyoteTimeCounter;
+
+    [Header("Jump Buffer")]
+    [SerializeField] private float jumpBufferTime = 0.2f;
+    private float JumpBufferTime;
+    
     private void Awake()
     {
         //Grab references for rigidbody and animator from object
@@ -26,18 +36,37 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        if(IsGrounded())
+        {
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
+        }
+        if(Input.GetButtonDown("Jump"))
+        {
+            JumpBufferTime = jumpBufferTime;
+        }
+        else
+        {
+            JumpBufferTime -= Time.deltaTime;
+        }
+        if (JumpBufferTime>0f && coyoteTimeCounter > 0f)
         {
             anim.SetTrigger("jump");
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+            JumpBufferTime = 0f;
         }
 
         if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            coyoteTimeCounter = 0f;
         }
 
         Flip();
+        
         canGrab = Physics2D.OverlapCircle(WallCheck.position, 0.2f, groundLayer);
         IsGrabbing = false;
         if (canGrab && !IsGrounded())
