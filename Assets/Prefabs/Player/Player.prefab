@@ -266,7 +266,7 @@ MonoBehaviour:
     m_Bits: 256
   groundCheck: {fileID: 48507313405171266}
   WallCheck: {fileID: 6389224667263463479}
-  coyoteTime: 1
+  coyoteTime: 0.2
   jumpBufferTime: 0.2
 --- !u!114 &7581927319578742654
 MonoBehaviour:
