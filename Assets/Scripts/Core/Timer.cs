@@ -22,7 +22,7 @@ public class Timer : MonoBehaviour
             msec = (int)((time - (int)time) * 1000);
             sec = (int)(time % 60);
             min = (int)(time / 60 % 60);
-            timer.text = string.Format("{0:00}:{1:00}:{2:000}", min, sec, msec);
+            timer.text = DBManager.Time = string.Format("{0:00}:{1:00}:{2:000}", min, sec, msec);
             yield return null;
         }
     }
