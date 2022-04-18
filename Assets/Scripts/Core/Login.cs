@@ -56,6 +56,7 @@ public class Login : MonoBehaviour
         if (request.downloadHandler.text[0] == '0')
         {
             DBManager.username = nameField.text;
+            print("Username: " + DBManager.username);
             DBManager.ReachedLevel = int.Parse(request.downloadHandler.text.Split('\t')[1]);
             InfoPrompt.SetActive(true);
             PlayButton.SetActive(true);
