@@ -18,13 +18,13 @@ public class PlayerMovement : MonoBehaviour
     private float gravityStore;
 
     [Header("Coyote Time")]
-    [SerializeField] private float coyoteTime = 0.2f;
+    [SerializeField] private float coyoteTime = 0.25f;
     private float coyoteTimeCounter;
 
     [Header("Jump Buffer")]
     [SerializeField] private float jumpBufferTime = 0.2f;
     private float JumpBufferTime;
-    
+
     private void Awake()
     {
         //Grab references for rigidbody and animator from object
@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
-        if(IsGrounded())
+        if (IsGrounded())
         {
             coyoteTimeCounter = coyoteTime;
         }
@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
         {
             coyoteTimeCounter -= Time.deltaTime;
         }
-        if(Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump"))
         {
             JumpBufferTime = jumpBufferTime;
         }
@@ -52,9 +52,8 @@ public class PlayerMovement : MonoBehaviour
         {
             JumpBufferTime -= Time.deltaTime;
         }
-        if (JumpBufferTime>0f && coyoteTimeCounter > 0f)
+        if (JumpBufferTime > 0f && coyoteTimeCounter > 0f)
         {
-            anim.SetTrigger("jump");
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             JumpBufferTime = 0f;
         }
@@ -66,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Flip();
-        
+
         canGrab = Physics2D.OverlapCircle(WallCheck.position, 0.2f, groundLayer);
         IsGrabbing = false;
         if (canGrab && !IsGrounded())

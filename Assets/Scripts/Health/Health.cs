@@ -18,6 +18,8 @@ public class Health : MonoBehaviour
     [SerializeField] private Behaviour[] components;
     private bool invulnerable;
     public GameObject player;
+    [Header("Death Sound")]
+    [SerializeField] private AudioClip deathSound;
 
     private void Awake()
     {
@@ -38,7 +40,6 @@ public class Health : MonoBehaviour
         {
             if (!dead)
             {
-
                 anim.SetTrigger("die");
 
                 foreach (Behaviour component in components)
@@ -47,6 +48,7 @@ public class Health : MonoBehaviour
                     Destroy(player);
                 }
                 dead = true;
+                SoundManager.instance.PlaySound(deathSound);
             }
             if (dead && player.tag == ("Player"))
             {

@@ -266,8 +266,8 @@ MonoBehaviour:
     m_Bits: 256
   groundCheck: {fileID: 48507313405171266}
   WallCheck: {fileID: 6389224667263463479}
-  coyoteTime: 0.2
-  jumpBufferTime: 0.2
+  coyoteTime: 0.25
+  jumpBufferTime: 0.25
 --- !u!114 &7581927319578742654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,6 +288,7 @@ MonoBehaviour:
   - {fileID: 2090091537}
   - {fileID: 7581927319578742654}
   player: {fileID: 7581927319578742630}
+  deathSound: {fileID: 8300000, guid: 530827dc3b2bb0b41b9104e56ee968de, type: 3}
 --- !u!114 &2090091537
 MonoBehaviour:
   m_ObjectHideFlags: 0

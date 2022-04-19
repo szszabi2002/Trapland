@@ -7,7 +7,7 @@ public class Finish : MonoBehaviour
 {
     public GameObject FinishMenu;
     public TMP_Text TimeText, DeathText;
-    [SerializeField] public static int reachedlevel = 2;
+     public static int reachedlevel = 2;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
@@ -43,18 +43,12 @@ public class Finish : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
-        DBManager.ReachedLevel = reachedlevel;
-        print("ReachedLevel: " + DBManager.ReachedLevel);
-        print("Username: " + DBManager.username);
-    }
-    public void CallSaveData()
-    {
-
+        DBManager.DeathCounter = 0;
     }
     IEnumerator SavePlayerData()
     {
         WWWForm form = new WWWForm();
-        form.AddField("username", DBManager.username);
+        form.AddField("usernamePost", DBManager.username);
         form.AddField("LevelPost", DBManager.Level);
         form.AddField("TimePost", DBManager.Time);
         form.AddField("DeathCounterPost", DBManager.DeathCounter);
