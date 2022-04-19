@@ -13,6 +13,8 @@ public class Spikehead : EnemyDamage
     private Vector3 startdestination;
     private float checkTimer;
     private bool attacking;
+    [Header("Impact Sound")]
+    [SerializeField] private AudioClip impactSound;
     private void Awake()
     {
         startdestination = this.transform.position;
@@ -62,6 +64,7 @@ public class Spikehead : EnemyDamage
     }
     private new void OnTriggerEnter2D(Collider2D collision)
     {
+        SoundManager.instance.PlaySound(impactSound);
         base.OnTriggerEnter2D(collision);
         StartCoroutine(StopAttack());
     }

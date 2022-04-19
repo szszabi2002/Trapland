@@ -268,6 +268,7 @@ MonoBehaviour:
   WallCheck: {fileID: 6389224667263463479}
   coyoteTime: 0.25
   jumpBufferTime: 0.25
+  jumpSound: {fileID: 8300000, guid: 03ad8a66df519ef49a0c6db4019df90a, type: 3}
 --- !u!114 &7581927319578742654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,7 +289,7 @@ MonoBehaviour:
   - {fileID: 2090091537}
   - {fileID: 7581927319578742654}
   player: {fileID: 7581927319578742630}
-  deathSound: {fileID: 8300000, guid: 530827dc3b2bb0b41b9104e56ee968de, type: 3}
+  deathSound: {fileID: 8300000, guid: 352b114eb127e4443bd7fea1154f2c24, type: 3}
 --- !u!114 &2090091537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,3 +303,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 7581927319578742630}
+  deathSound: {fileID: 8300000, guid: 352b114eb127e4443bd7fea1154f2c24, type: 3}

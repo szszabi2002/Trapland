@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Jump Buffer")]
     [SerializeField] private float jumpBufferTime = 0.2f;
     private float JumpBufferTime;
+    [Header("Jump Sound")]
+    [SerializeField] private AudioClip jumpSound;
 
     private void Awake()
     {
@@ -56,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             JumpBufferTime = 0f;
+            SoundManager.instance.PlaySound(jumpSound);
         }
 
         if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)

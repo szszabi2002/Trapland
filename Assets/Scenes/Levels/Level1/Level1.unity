@@ -2554,7 +2554,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -48.503048, y: -1.0000002, z: -10}
+  m_LocalPosition: {x: -48.507694, y: -1.0000002, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3271,7 +3271,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1394697824487284730, guid: afb8a08855d76af4f8d7cf7430de19cb, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1394697824487284730, guid: afb8a08855d76af4f8d7cf7430de19cb, type: 3}
       propertyPath: m_LocalScale.x
@@ -3550,7 +3550,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1178462078}
   - component: {fileID: 1178462077}
-  - component: {fileID: 1178462076}
+  - component: {fileID: 1178462079}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -3558,18 +3558,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1178462076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1178462075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 402085ee6e0ee0e42a57f99d474fcc8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &1178462077
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3680,6 +3668,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1178462079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178462075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 402085ee6e0ee0e42a57f99d474fcc8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundtrack:
+  - {fileID: 8300000, guid: fbd2cf77d7a3dcf46ab9b0b95caccda3, type: 3}
+  - {fileID: 8300000, guid: 08c2b68324ceafb4fa617a3e51643845, type: 3}
+  - {fileID: 8300000, guid: b276e62765253f040b8ff1d5109a0744, type: 3}
 --- !u!1 &1192950938
 GameObject:
   m_ObjectHideFlags: 0
@@ -14399,7 +14403,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1846880242 stripped
 Transform:
