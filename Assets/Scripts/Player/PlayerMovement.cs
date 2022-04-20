@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             JumpBufferTime = 0f;
-            SoundManager.instance.PlaySound(jumpSound);
+            //SoundManager.instance.PlaySound(jumpSound);
         }
 
         if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)

@@ -14,7 +14,7 @@ public class KillOnTouch : MonoBehaviour
         {
             hasEntered = true;
             DBManager.DeathCounter += 1;
-            SoundManager.instance.PlaySound(deathSound);
+            //SoundManager.instance.PlaySound(deathSound);
             Destroy(player);
             LevelManager.Instance.Respawn();
         }

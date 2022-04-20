@@ -1,16 +1,18 @@
- using UnityEngine;
- using System.Collections;
-
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Audio;
+[RequireComponent(typeof(Slider))]
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance { get; private set; }
-    private AudioSource source;
-    public AudioClip[] soundtrack;
-     private int i;
+    public AudioMixer mixer;
+    [SerializeField] public string volumeName;
+    [SerializeField] TMPro.TMP_Text volumeLabel;
     private void Awake()
     {
-        source = GetComponent<AudioSource>();
-
         //Keep this object even when we go to new scene
         if (instance == null)
         {
@@ -21,15 +23,27 @@ public class SoundManager : MonoBehaviour
         else if (instance != null && instance != this)
             Destroy(gameObject);
     }
-    public void PlaySound(AudioClip _sound)
+    private void Start()
     {
-        source.PlayOneShot(_sound);
+        UpdateValueOnChange(slider.value);
+        slider.onValueChanged.AddListener(delegate { UpdateValueOnChange(slider.value); });
     }
-
-    void Start()
+    Slider slider
     {
-        i = Random.Range(0, soundtrack.Length);
-        source.clip = soundtrack[i];
-        source.Play();
+        get
+        {
+            return GetComponent<Slider>();
+        }
+    }
+    public void UpdateValueOnChange(float value)
+    {
+        if(mixer != null)
+        {
+            mixer.SetFloat(volumeName, Mathf.Log10(value) * 20);
+        }
+        if(volumeLabel != null)
+        {
+            volumeLabel.text = Mathf.RoundToInt(value * 100f).ToString() + "%";
+        }
     }
 }
