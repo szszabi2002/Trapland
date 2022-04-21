@@ -7,22 +7,9 @@ using UnityEngine.Audio;
 [RequireComponent(typeof(Slider))]
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager instance { get; private set; }
     public AudioMixer mixer;
     [SerializeField] public string volumeName;
     [SerializeField] TMPro.TMP_Text volumeLabel;
-    private void Awake()
-    {
-        //Keep this object even when we go to new scene
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        //Destroy duplicate gameobjects
-        else if (instance != null && instance != this)
-            Destroy(gameObject);
-    }
     private void Start()
     {
         UpdateValueOnChange(slider.value);
