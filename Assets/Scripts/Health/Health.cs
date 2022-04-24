@@ -48,7 +48,7 @@ public class Health : MonoBehaviour
                     Destroy(player);
                 }
                 dead = true;
-                //SoundManager.instance.PlaySound(deathSound);
+                SoundEffectsManager.Instance.PlaySound(deathSound);
             }
             if (dead && player.tag == ("Player"))
             {

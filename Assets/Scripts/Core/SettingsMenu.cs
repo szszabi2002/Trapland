@@ -9,6 +9,7 @@ public class SettingsMenu : MonoBehaviour
     private static readonly string FirstPlayer = "FirstPlayer";
     private static readonly string BackgroundPref = "BackgroundPref";
     private static readonly string SoundEffectsPref = "SoundEffectsPref";
+    public GameObject settings;
     private int firstPLayInt;
     public Slider backgroundSlider, soundEffectsSlider;
     private float backgroundFloat, soundEffectsFloat;
@@ -16,6 +17,7 @@ public class SettingsMenu : MonoBehaviour
     public TMP_Dropdown resolutionDropdown;
     private void Start()
     {
+        settings.SetActive(false);
         firstPLayInt = PlayerPrefs.GetInt(FirstPlayer);
         if (firstPLayInt == 0)
         {

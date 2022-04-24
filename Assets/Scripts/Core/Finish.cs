@@ -7,7 +7,13 @@ public class Finish : MonoBehaviour
 {
     public GameObject FinishMenu;
     public TMP_Text TimeText, DeathText;
-     public static int reachedlevel = 2;
+    [SerializeField] public int reachedlevel;
+
+    public Finish(int reachedlevel)
+    {
+        this.reachedlevel = reachedlevel;
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
@@ -37,6 +43,10 @@ public class Finish : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+    public void OpenStats()
+    {
+        Application.OpenURL("https://trapland.000webhostapp.com/Stats.php");
+    }
     private void Awake()
     {
         if (!DBManager.LoggedIn)
@@ -63,6 +73,5 @@ public class Finish : MonoBehaviour
         {
             Debug.Log("Data not Saved, Error: #" + request.downloadHandler.text);
         }
-        //DBManager.Logout();
     }
 }

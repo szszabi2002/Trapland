@@ -58,18 +58,16 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             JumpBufferTime = 0f;
-            //SoundManager.instance.PlaySound(jumpSound);
+            SoundEffectsManager.Instance.PlaySound(jumpSound);
         }
-
         if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
             coyoteTimeCounter = 0f;
         }
-
         Flip();
 
-        canGrab = Physics2D.OverlapCircle(WallCheck.position, 0.2f, groundLayer);
+        /*canGrab = Physics2D.OverlapCircle(WallCheck.position, 0.2f, groundLayer);
         IsGrabbing = false;
         if (canGrab && !IsGrounded())
         {
@@ -78,10 +76,16 @@ public class PlayerMovement : MonoBehaviour
                 IsGrabbing = true;
             }
         }
-        /*if (IsGrabbing)
+        if (IsGrabbing)
         {
             //rb.gravityScale = 0f;
             rb.velocity = Vector2.zero;
+
+            if (Input.GetButtonDown("Jump"))
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+                SoundEffectsManager.Instance.PlaySound(jumpSound);
+            }
         }
         else
         {

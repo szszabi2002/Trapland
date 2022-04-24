@@ -59,6 +59,7 @@ MonoBehaviour:
   - {fileID: 2308063430252934719}
   - {fileID: 2308063431247405269}
   - {fileID: 2308063430091446431}
+  arrowSound: {fileID: 8300000, guid: 6a140f17453a1a446b431097d526b0fc, type: 3}
 --- !u!1 &7148802705679361808
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,7 +129,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1174503939
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -8654421302381229280, guid: 573c22279c1eb734696548dfba41d021, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

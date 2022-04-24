@@ -75,6 +75,7 @@ MonoBehaviour:
   FinishMenu: {fileID: 0}
   TimeText: {fileID: 0}
   DeathText: {fileID: 0}
+  reachedlevel: 3
 --- !u!1001 &1097714792789508470
 PrefabInstance:
   m_ObjectHideFlags: 0
