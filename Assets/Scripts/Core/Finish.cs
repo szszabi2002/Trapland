@@ -45,7 +45,7 @@ public class Finish : MonoBehaviour
     }
     public void OpenStats()
     {
-        Application.OpenURL("https://trapland.000webhostapp.com/Stats.php");
+        Application.OpenURL("https://trapland.000webhostapp.com/Statistics.php");
     }
     private void Awake()
     {
