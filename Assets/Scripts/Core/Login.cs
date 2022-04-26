@@ -52,6 +52,7 @@ public class Login : MonoBehaviour
         form.AddField("username", nameField.text);
         form.AddField("password", passwordField.text);
         UnityWebRequest request = UnityWebRequest.Post("https://trapland.000webhostapp.com/Login.php", form);
+        request.timeout = 5;
         yield return request.SendWebRequest();
         if (request.downloadHandler.text[0] == '0')
         {
@@ -66,7 +67,14 @@ public class Login : MonoBehaviour
         {
             InfoPrompt.SetActive(true);
             OkButton.SetActive(true);
-            Info.SetText("User login failed! \nError: #" + request.downloadHandler.text, true);
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                Info.SetText("User creation failed! \nError: #" + request.error, true);
+            }
+            else
+            {
+                Info.SetText("User creation failed! \nError: #" + request.downloadHandler.text, true);
+            }
         }
     }
     public void VerifyInputs()
