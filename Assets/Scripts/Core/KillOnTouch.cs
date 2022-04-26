@@ -15,9 +15,15 @@ public class KillOnTouch : MonoBehaviour
             hasEntered = true;
             DBManager.DeathCounter += 1;
             SoundEffectsManager.Instance.PlaySound(deathSound);
-            Destroy(player);
             LevelManager.Instance.Respawn();
+            Destroy(player);
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == ("SureKill"))
+        {
+            hasEntered = false;
         }
     }
 }
-

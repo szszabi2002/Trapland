@@ -10,10 +10,19 @@ public class LevelManager : MonoBehaviour
     public Transform respawnPoint;
     public GameObject playerPrefab;
     public CinemachineVirtualCameraBase cam;
-    private void Awake() {
-        Instance = this;
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }  
     }
-    public void Respawn(){
+    public void Respawn()
+    {
         GameObject Player = Instantiate(playerPrefab, respawnPoint.position, Quaternion.identity);
         cam.Follow = Player.transform;
     }
@@ -29,5 +38,4 @@ public class LevelManager : MonoBehaviour
             yield return null;
         }
     }
-
 }
