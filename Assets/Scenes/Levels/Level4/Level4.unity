@@ -1951,7 +1951,7 @@ MonoBehaviour:
   FinishMenu: {fileID: 672516656}
   TimeText: {fileID: 1092936436}
   DeathText: {fileID: 278496535}
-  reachedlevel: 0
+  reachedlevel: 5
 --- !u!1 &253576624
 GameObject:
   m_ObjectHideFlags: 0
@@ -2009,7 +2009,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level 2 Completed
+  m_text: Level 4 Completed
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
