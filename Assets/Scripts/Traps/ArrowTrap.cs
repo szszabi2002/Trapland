@@ -11,7 +11,6 @@ public class ArrowTrap : MonoBehaviour
     private void Attack()
     {
         cooldownTimer = 0;
-
         arrows[FindArrow()].transform.position = firePoint.position;
         arrows[FindArrow()].GetComponent<EnemyProjectile>().ActivateProjectile();
         SoundEffectsManager.Instance.PlaySound(arrowSound);
