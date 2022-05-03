@@ -9,11 +9,6 @@ public class Finish : MonoBehaviour
     public TMP_Text TimeText, DeathText;
     [SerializeField] public int reachedlevel;
 
-    public Finish(int reachedlevel)
-    {
-        this.reachedlevel = reachedlevel;
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
@@ -62,7 +57,12 @@ public class Finish : MonoBehaviour
         form.AddField("LevelPost", DBManager.Level);
         form.AddField("TimePost", DBManager.Time);
         form.AddField("DeathCounterPost", DBManager.DeathCounter);
-        form.AddField("ReachedLevelPost", DBManager.ReachedLevel = reachedlevel);
+        int reachedlevel = this.reachedlevel;
+        if (reachedlevel > DBManager.ReachedLevel)
+        {
+            DBManager.ReachedLevel = reachedlevel;
+        }
+        form.AddField("ReachedLevelPost", DBManager.ReachedLevel);
         UnityWebRequest request = UnityWebRequest.Post("https://trapland.000webhostapp.com/Savedata.php", form);
         yield return request.SendWebRequest();
         if (request.downloadHandler.text[0] == '0')

@@ -6,21 +6,15 @@ using UnityEngine.SceneManagement;
 using TMPro;
 public class ButtonManager : MonoBehaviour
 {
-    
     Button[] LevelButton;
     private void Awake()
     {
-        int ReachedLevel = DBManager.ReachedLevel;
-        if (PlayerPrefs.GetInt("Level") >= 2)
-        {
-            ReachedLevel = PlayerPrefs.GetInt("Level");
-        }
         LevelButton = new Button[transform.childCount];
         for (int i = 0; i < LevelButton.Length; i++)
         {
             LevelButton[i] = transform.GetChild(i).GetComponent<Button>();
             LevelButton[i].GetComponentInChildren<TextMeshProUGUI>().SetText((i + 1).ToString());
-            if (i + 1 > ReachedLevel)
+            if (i + 1 > DBManager.ReachedLevel)
             {
                 LevelButton[i].interactable = false;
             }

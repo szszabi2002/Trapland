@@ -54,27 +54,28 @@ public class Login : MonoBehaviour
         UnityWebRequest request = UnityWebRequest.Post("https://trapland.000webhostapp.com/Login.php", form);
         request.timeout = 5;
         yield return request.SendWebRequest();
-        if (request.downloadHandler.text[0] == '0')
+        switch (request.downloadHandler.text[0])
         {
-            DBManager.username = nameField.text;
-            print("Username: " + DBManager.username);
-            DBManager.ReachedLevel = int.Parse(request.downloadHandler.text.Split('\t')[1]);
-            InfoPrompt.SetActive(true);
-            PlayButton.SetActive(true);
-            Info.SetText("Logged in as " + DBManager.username, true);
-        }
-        else
-        {
-            InfoPrompt.SetActive(true);
-            OkButton.SetActive(true);
-            if (request.result != UnityWebRequest.Result.Success)
-            {
-                Info.SetText("User creation failed! \nError: #" + request.error, true);
-            }
-            else
-            {
-                Info.SetText("User creation failed! \nError: #" + request.downloadHandler.text, true);
-            }
+            case '0':
+                DBManager.username = nameField.text;
+                print("Username: " + DBManager.username);
+                DBManager.ReachedLevel = int.Parse(request.downloadHandler.text.Split('\t')[1]);
+                InfoPrompt.SetActive(true);
+                PlayButton.SetActive(true);
+                Info.SetText("Logged in as " + DBManager.username, true);
+                break;
+            default:
+                InfoPrompt.SetActive(true);
+                OkButton.SetActive(true);
+                if (request.result != UnityWebRequest.Result.Success)
+                {
+                    Info.SetText("User creation failed! \nError: #" + request.error, true);
+                }
+                else
+                {
+                    Info.SetText("User creation failed! \nError: #" + request.downloadHandler.text, true);
+                }
+                break;
         }
     }
     public void VerifyInputs()
